@@ -1,59 +1,215 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gestión de Inspecciones del IPV
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### Comisión: 2.1
 
-## About Laravel
+#### Integrantes: 
+- Aveiro Matías 
+- González Benjamín 
+- Romero Camila
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### Docente: 
+- Veron Facundo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Fecha: 24/11/2025
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Resumen ejecutivo
+El Sistema de Gestión de Inspecciones del IPV es una aplicación web desarrollada en PHP puro cuyo objetivo es digitalizar y centralizar el registro de inspecciones de viviendas del Instituto Provincial de la Vivienda (IPV). Se resuelven problemas como la falta de registros unificados, demoras por procesos manuales y dificultad para visualizar el estado general de las inspecciones.
 
-## Learning Laravel
+El sistema implementa operaciones CRUD sobre inspecciones, estados, tipos de vivienda y usuarios, además de un dashboard con métricas. Incorpora metodologías ágiles, testing con PHPUnit, CI/CD con GitHub Actions, linters, buenas prácticas y documentación.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Contexto
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Alcance
+- Gestión completa de inspecciones.
+- Gestión de estados de inspección.
+- Asignación de inspectores.
+- Dashboard de métricas principales.
+- Persistencia con base de datos MySQL.
 
-## Laravel Sponsors
+### Requisitos clave
+- CRUD funcional.
+- Interfaz clara y navegable.
+- Testing básico unitario.
+- Pipeline CI/CD activo.
+- Documentación completa del proceso.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Stack tecnológico
+- PHP 8+
+- MySQL
+- Composer (autoloading + dependencias)
+- PHPUnit 10
+- GitHub Actions (CI/CD)
+- HTML + CSS personalizado
+- XAMPP
+- Jira (gestión ágil)
+- PowerBi (ánalisis de datos y metricas)
+- Figma (prototipado)
+- Laravel (framework)
 
-### Premium Partners
+## Metodologías ágiles
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Marco adoptado
+Scrum híbrido, adaptado a un equipo de 3 integrantes.
 
-## Contributing
+### Roles
+- DBA: Aveiro Matias
+- Fronted: Romero Camila
+- Backend: González Benjamín
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Artefactos
+- Product Backlog
+- Sprint Backlog semanal
+- Definition of Ready (DoR)
+- Definition of Done (DoD)
 
-## Code of Conduct
+### Ceremonias
+- Sprint Planning semanal
+- Daily Scrum por WhatsApp
+- Sprint Review al finalizar cada iteración
+- Sprint Retrospectivos breves con mejoras
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Tablero
+Jira con columnas: To Do → In Progress → Review → Done  
+Las capturas se agregan en la documentacion
 
-## Security Vulnerabilities
+## Repositorio & versionado
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Estrategia de ramas
+- main: rama estable
+- feature/...: cada funcionalidad nueva
+- hotfix/...: correcciones puntuales
 
-## License
+### Convenciones de commits
+Se usó Conventional Commits:
+- feat: para funcionalidades
+- fix: arreglos
+- refactor: mejoras internas
+- docs: documentación
+- test: pruebas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ejemplo:
+feat: agregar módulo de inspecciones
+
+## Testing
+
+### Estrategia
+- Unit tests: modelos y conexión
+- Integración: pruebas reales hacia MySQL
+- E2E: validación manual
+
+### Herramientas
+PHPUnit 10
+
+### Integración en CI
+GitHub Actions ejecuta:
+composer install
+composer test
+
+## Calidad y buenas prácticas
+
+### Linters
+PHPCS con PSR-12  
+Comando:
+composer lint
+
+### Seguridad
+- Uso de .env y .env.example
+- Queries preparadas en PDO
+- No subir claves reales
+
+### Principios aplicados
+- Separación Model/View/Controller
+- Autoload PSR-4
+- Código modular
+
+## CI/CD
+
+### Pipeline
+Etapas:
+1. Checkout
+2. Composer install
+3. Test + Lint
+4. Artefactos y logs
+
+### Archivo principal
+name: CI-TEST IPV
+
+    on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v3
+
+    - name: Instalar PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, pdo, pdo_mysql
+
+    - name: Instalar dependencias (Composer)
+      run: composer install --no-interaction --prefer-dist
+
+    - name: Validar sintaxis de PHP
+      run: |
+        find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
+
+## Infraestructura & ejecución
+
+### Cómo ejecutar localmente
+1. Instalar XAMPP  
+2. Clonar repositorio en htdocs  
+3. Importar base de datos desde /sql/db_ipv_proyecto.sql  
+4. Copiar variables:
+cp .env.example .env
+5. Acceder:
+http://localhost/ipvsistema_php_puro/public/
+
+### Archivo .env.example
+DB_HOST=localhost  
+DB_NAME=db_ipv_proyecto  
+DB_USER=root  
+DB_PASS=
+
+## Riesgos y lecciones
+
+### Riesgos
+- Falta de experiencia con PHPUnit
+- Configuración de autoloading
+- Errores de ruta en XAMPP
+- Ajustes de permisos
+
+### Lecciones aprendidas
+- Las historias pequeñas son más fáciles de gestionar
+- La comunicación diaria evita bloqueos
+- CI/CD automatiza tareas importantes
+- Documentar ahorra tiempo en el equipo
+- No ponerse de novio
+
+## Conclusiones y trabajo futuro
+
+### Conclusiones
+El sistema cumple los requisitos funcionales del IPV.  
+La incorporación de CI/CD y tests incrementó la calidad general.  
+El dashboard facilita la interpretación rápida del estado de inspecciones.
+
+### Trabajo futuro
+- Autenticación avanzada y roles
+- Reportes PDF/Excel
+- API REST
+- Módulo móvil para inspectores
+- Migración futura a Laravel o Flexmind (se vienen cositas((si se pone la 10 Hoferek)))
+
+## Referencias
+- PHP Manual
+- PHPUnit Docs
+- GitHub Actions Docs
+- Notas del curso Metodología de Sistemas II
