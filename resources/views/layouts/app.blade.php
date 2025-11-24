@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? 'Sistema IPV' }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body class="bg-[#F5F7FB]">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <nav class="bg-white shadow-sm border-b p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="bg-black text-white w-10 h-10 flex items-center justify-center rounded-lg">
+                🏢
+            </div>
+            <div>
+                <h1 class="text-xl font-semibold">IPV Formosa</h1>
+                <p class="text-sm text-gray-500 -mt-1">Sistema de Inspecciones</p>
+            </div>
         </div>
-    </body>
+
+        <div class="flex items-center space-x-6">
+            <a href="{{ route('dashboard') }}"
+               class="px-4 py-2 rounded-lg text-sm font-medium 
+               {{ request()->routeIs('dashboard') ? 'bg-black text-white' : 'text-gray-700 hover:bg-gray-100' }}">
+                Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <main class="p-6">
+        @yield('content')
+    </main>
+
+</body>
 </html>

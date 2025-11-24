@@ -10,15 +10,21 @@ class CreateInspeccionesTable extends Migration
     {
         Schema::create('inspecciones', function (Blueprint $table) {
             $table->increments('id_inspeccion');
-            $table->integer('id_motivo')->unsigned();
+
+            $table->unsignedInteger('id_motivo');
             $table->string('codigo_vivienda', 50);
             $table->string('direccion', 255);
             $table->string('geolocalizacion', 255);
-            $table->integer('tipo_vivienda_id')->unsigned()->nullable();
-            $table->integer('estado_id')->unsigned()->nullable();
-            $table->integer('usuario_id')->unsigned();
+
+            $table->unsignedInteger('tipo_vivienda_id')->nullable();
+            $table->unsignedInteger('estado_id')->nullable();
+
+            // IMPORTANTE: users.id = big integer unsigned
+            $table->unsignedBigInteger('usuario_id');
+
             $table->date('fecha_inspeccion')->nullable();
             $table->string('observaciones', 255)->nullable();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
 
@@ -27,9 +33,13 @@ class CreateInspeccionesTable extends Migration
             $table->index('usuario_id');
             $table->index('id_motivo');
 
+            // Relaciones corregidas
             $table->foreign('tipo_vivienda_id')->references('id')->on('tipos_viviendas');
             $table->foreign('estado_id')->references('id_estado')->on('estados_inspeccion');
-            $table->foreign('usuario_id')->references('id_usuario')->on('users');
+
+            // ESTA ES LA RELACIÓN CORRECTA
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->foreign('id_motivo')->references('id_motivo')->on('motivos_inspeccion')->onDelete('restrict')->onUpdate('cascade');
         });
     }
